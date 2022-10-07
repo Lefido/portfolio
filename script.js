@@ -3,31 +3,31 @@
 
 // Variable général - Header
 
- var headerMax = document.querySelector('header');
+ var header = document.querySelector('header');
 
  var myName = document.querySelector('.myname');
  var myJob = document.querySelector('.myjob');
- var react = document.querySelector('.react');
- var js = document.querySelector('.js');
- var node = document.querySelector('.node');
- var php = document.querySelector('.php');
- var mySql = document.querySelector('.mysql');
+//  var react = document.querySelector('.react');
+//  var js = document.querySelector('.js');
+//  var node = document.querySelector('.node');
+//  var php = document.querySelector('.php');
+//  var mySql = document.querySelector('.mysql');
 
- var maxHeader_X = headerMax.offsetWidth;
- var maxHeader_Y = headerMax.offsetHeight;
+ var maxHeader_X = header.offsetWidth;
+ var maxHeader_Y = header.offsetHeight;
 
  console.log("hauteur " + maxHeader_Y)
 
  // Controle si la taille de la fenettre à été modifiée
 window.onresize = function() {
 
-    if (maxHeader_X != headerMax.offsetWidth ) {
-        maxHeader_X = headerMax.offsetWidth;
+    if (maxHeader_X != header.offsetWidth ) {
+        maxHeader_X = header.offsetWidth;
         console.log(maxHeader_X);
     }
 
-    if (maxHeader_Y != headerMax.offsetHeight ) {
-        maxHeader_Y = headerMax.offsetHeight;
+    if (maxHeader_Y != header.offsetHeight ) {
+        maxHeader_Y = header.offsetHeight;
         console.log(maxHeader_Y);
     }
     
@@ -35,28 +35,27 @@ window.onresize = function() {
 
 // Positionnement des éléments du Header
 
- myName.style.top = "47%"; 
+ myName.style.top = "45%"; 
  myName.style.left = "45%";
 
- myJob.style.top = "53%"; 
+ myJob.style.top = "55%"; 
  myJob.style.left = "55%"; 
 
+//  node.style.top = "45%"; 
+//  node.style.left = "20%";
 
- node.style.top = "45%"; 
- node.style.left = "20%";
+//  js.style.top = "45%"; 
+//  js.style.left = "50%";
 
- js.style.top = "45%"; 
- js.style.left = "50%";
-
- php.style.top = "45%"; 
- php.style.left = "80%";
+//  php.style.top = "45%"; 
+//  php.style.left = "80%";
 
 
- react.style.top = "50%"; 
- react.style.left = "35%";
+//  react.style.top = "50%"; 
+//  react.style.left = "35%";
  
- mySql.style.top = "50%"; 
- mySql.style.left = "65%";
+//  mySql.style.top = "50%"; 
+//  mySql.style.left = "65%";
 
 // Ajout les élément du Header dans un tableau 
 
@@ -69,6 +68,10 @@ class Header {
         this.y = this.objet.offsetTop
         this.vx = rnd(4)
         this.vy = rnd(4)
+        // this.r = rnd(360)
+        // this.r_v = 1 + rnd(5)
+        this.size = 20 + rnd(10)
+        this.size_v = 0.2
         this.cos = rnd(360)
         this.sin = rnd(360)
         this.color = `rgb(${rnd(255)},${rnd(255)},${rnd(255)})`
@@ -84,7 +87,6 @@ objetHeader.forEach(objet => {
 })
 
 
-
 console.log(tabHeader);
 
 setInterval(animHeader, 1000/60);
@@ -93,6 +95,27 @@ setInterval(animHeader, 1000/60);
 function animHeader() {
 
     for (objet of tabHeader) {
+
+        // Rotation
+        // objet.r += objet.r_v;
+
+        // objet.objet.style.transform = `rotate(${objet.r}deg)`
+
+        // if (objet.objet.r > 360) {
+        //     objet.objet.r = 1
+        // } 
+
+        // Zoom
+
+        objet.size = objet.size + objet.size_v
+
+        if (objet.size >= 40 || objet.size <= 20) {
+            objet.size_v = - objet.size_v
+        }
+
+        objet.objet.style.fontSize = objet.size + "px";
+
+        // Déplacement
 
         objet.x = objet.x + objet.vx;
 
@@ -113,8 +136,8 @@ function animHeader() {
         if (objet.cos > 360) {objet.cos = 0}
         if (objet.sin > 360) {objet.sin = 0}
 
-        objet.x = maxHeader_X / 2 + 250 * Math.cos(objet.cos);
-        objet.y = maxHeader_Y / 2 + 200 * Math.sin(objet.sin);
+        objet.x = maxHeader_X / 2 + (maxHeader_X/4) * Math.cos(objet.cos);
+        objet.y = maxHeader_Y / 2 + (maxHeader_Y/4) * Math.sin(objet.sin);
 
         objet.objet.style.color = objet.color;
 
