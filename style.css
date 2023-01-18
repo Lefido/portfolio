@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  font-family: "Sofia Sans", sans-serif;
 }
 
 html {
@@ -22,13 +23,20 @@ body {
   position: fixed;
   padding: 10px;
   font-size: 30px;
-  background-color: gray;
+  background-color: #0780D3;
   text-align: center;
   top: 96%;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 30px 30px 0 0;
   z-index: 1;
+  transition: 0.2s;
+  transform-origin: left;
+  box-shadow: 0 0 15px 2px white;
+}
+
+.haut-page:hover {
+  scale: 1.1;
 }
 
 nav {
@@ -73,12 +81,15 @@ article {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px white;
 }
 .profession .name {
   font-size: 70px;
 }
 .profession .function {
-  font-size: 50px;
+  font-size: 38px;
+  font-family: "Orbitron", sans-serif;
 }
 .profession .separateur {
   width: 200px;
@@ -107,7 +118,20 @@ article {
   display: flex;
 }
 .info i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
+  color: #0780D3;
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.info p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slogan {
@@ -137,6 +161,9 @@ article {
   padding: 40px 0;
   color: black;
   text-decoration: underline;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px white;
+  font-family: "Orbitron", sans-serif;
 }
 
 #competence {
@@ -160,6 +187,7 @@ article {
   text-align: center;
   padding: 10px;
   border-bottom: 1px solid gray;
+  text-transform: uppercase;
 }
 
 .competences {
@@ -178,6 +206,7 @@ article {
 .competence {
   width: 50%;
   padding: 10px;
+  font-family: "Orbitron", sans-serif;
 }
 
 #parcours {
@@ -189,6 +218,7 @@ article {
 
 .parcours {
   padding: 20px;
+  text-shadow: 0 0 15px white;
 }
 
 .parcour {
@@ -202,21 +232,23 @@ article {
   width: 25%;
   font-size: 25px;
   text-align: center;
+  color: #0780D3;
 }
 
 .separateur-parcour {
   width: 5%;
-  border-left: 1px solid white;
+  border-left: 1px solid gray;
   position: relative;
 }
 .separateur-parcour .puce {
   width: 20px;
   height: 20px;
-  background-color: white;
+  background-color: #0780D3;
+  border: 1px solid gray;
   border-radius: 50%;
   position: absolute;
   left: -10px;
-  top: 5px;
+  top: 4px;
 }
 
 .parcour-content {
@@ -280,6 +312,11 @@ article {
     margin-top: 20px;
   }
 }
+@media screen and (max-width: 850px) {
+  .competences {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 700px) {
   header {
     width: 100%;
@@ -301,6 +338,14 @@ article {
   }
   .parcour-content {
     width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .infos {
+    flex-direction: column;
+  }
+  .info {
+    margin: 10px 0 10px;
   }
 }
 
